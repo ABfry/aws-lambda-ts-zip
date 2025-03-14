@@ -1,14 +1,14 @@
 # Lambda Package
 
-TypeScript で作成された AWS Lambda 関数をコンパイルして ZIP パッケージ化するためのツールです。
+TypeScript で作成された AWS Lambda 関数をコンパイルして ZIP パッケージ化するためのツール
 
 ## 概要
 
-このツールは、TypeScript で書かれた AWS Lambda 関数のデプロイメントパッケージを簡単に作成することができます。TypeScript コードをコンパイルし、必要な依存関係と一緒に ZIP ファイルにパッケージングします。
+このツールは、TypeScript で書かれた AWS Lambda 関数のデプロイメントパッケージを簡単に作成することができる。TypeScript コードをコンパイルし、必要な依存関係と一緒に ZIP ファイルにパッケージングする。
 
 ## インストール
 
-npm を使用してインストールできます：
+npm を使用してインストール：
 
 ```bash
 # グローバルにインストール
@@ -32,7 +32,7 @@ npx @abfry0620/lambda-package
 
 ### スクリプトとして
 
-package.json のスクリプトに追加して使用することもできます：
+package.json のスクリプトに追加して使用することもできる：
 
 ```json
 "scripts": {
@@ -40,7 +40,7 @@ package.json のスクリプトに追加して使用することもできます�
 }
 ```
 
-そして、以下のコマンドを実行します：
+そして、以下のコマンドを実行する：
 
 ```bash
 npm run package
@@ -48,13 +48,13 @@ npm run package
 
 ## 設定
 
-デフォルトでは、以下の設定で動作します：
+デフォルトでは、以下の設定で動作する：
 
 - `distDir`: 'dist' - コンパイル後のファイルが格納されるディレクトリ
 - `packageDir`: 'packages' - 出力される ZIP ファイルが格納されるディレクトリ
 - `packageName`: 'lambda-function.zip' - 出力される ZIP ファイルの名前
 
-カスタム設定を行うには、プロジェクトのルートディレクトリに `lambda-package-config.json` ファイルを作成します：
+カスタム設定を行うには、プロジェクトのルートディレクトリに `lambda-package-config.json` ファイルを作成する：
 
 ```json
 {
@@ -64,7 +64,7 @@ npm run package
 }
 ```
 
-初回実行時に設定ファイルが存在しない場合は、デフォルト設定で自動的に作成されます。
+初回実行時に設定ファイルが存在しない場合は、デフォルト設定で自動的に作成される。
 
 ## 動作の流れ
 
@@ -80,4 +80,4 @@ MIT
 
 ## 作者
 
-abfry0620
+ABfry

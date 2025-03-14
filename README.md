@@ -1,5 +1,7 @@
 # Lambda Package
 
+[日本語版はこちら](README-ja.md)
+
 A tool for compiling and packaging AWS Lambda functions created in TypeScript into ZIP files.
 
 ## Overview
@@ -80,4 +82,4 @@ MIT
 
 ## Author
 
-abfry0620
+ABfry
