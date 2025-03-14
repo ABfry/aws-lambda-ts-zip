@@ -1,52 +1,55 @@
-# Lambda Package
+# lambda-package
 
 [日本語版はこちら](README-ja.md)
 
-A tool for compiling and packaging AWS Lambda functions created in TypeScript into ZIP files.
-
-## Overview
-
-This tool allows you to easily create deployment packages for AWS Lambda functions written in TypeScript. It compiles your TypeScript code and packages it together with the necessary dependencies into a ZIP file.
+A CLI tool for compiling and packaging AWS Lambda functions created in TypeScript into ZIP files.
 
 ## Installation
 
-You can install it using npm:
+Simply run it using `npx`:
 
 ```bash
-# Global installation
-npm install -g @abfry0620/lambda-package
+npx @abfry0620/lambda-package
 
-# Or install in your project
-npm install --save-dev @abfry0620/lambda-package
+# Or install globally if you prefer
+npm install -g @abfry0620/lambda-package
 ```
 
 ## Usage
 
-### Command Line
+### Display Help
 
 ```bash
-# When installed globally
-lambda-package
-
-# Using npx
-npx @abfry0620/lambda-package
+npx @abfry0620/lambda-package --help
 ```
 
-### As a Script
+Example output:
 
-You can also add it to your package.json scripts:
+```sh
+Usage: lambda-package [options]
 
-```json
-"scripts": {
-  "package": "lambda-package"
-}
+Compile and Zip programs created in TypeScript for AWS Lambda.
+
+Options:
+  -V, --version  output the version number
+  -h, --help     display help for command
 ```
 
-Then run:
+### Display Version
 
 ```bash
-npm run package
+npx @abfry0620/lambda-package --version
 ```
+
+## Process Flow
+
+When you run the tool, it performs the following steps:
+
+1. Clean up existing `dist` directory and `packages` directory
+2. Compile TypeScript code (`npm run build`)
+3. Install production dependencies only
+4. Package compiled code and dependencies into a ZIP file
+5. Restore development dependencies
 
 ## Configuration
 
@@ -68,17 +71,25 @@ To customize the configuration, create a `lambda-package-config.json` file in yo
 
 If the configuration file doesn't exist on the first run, it will be automatically created with default settings.
 
-## Process Flow
+## Using in Your Project
 
-1. Clean up existing `dist` directory and `packages` directory
-2. Compile TypeScript code (`npm run build`)
-3. Install production dependencies only
-4. Package compiled code and dependencies into a ZIP file
-5. Restore development dependencies
+You can also add it to your package.json scripts:
+
+```json
+"scripts": {
+  "package": "lambda-package"
+}
+```
+
+Then run:
+
+```bash
+npm run package
+```
 
 ## License
 
-MIT
+[MIT License](LICENSE).
 
 ## Author
 

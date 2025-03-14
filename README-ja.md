@@ -1,50 +1,59 @@
-# Lambda Package
+# lambda-package
 
-TypeScript で作成された AWS Lambda 関数をコンパイルして ZIP パッケージ化するためのツール
+[English version here](README.md)
 
-## 概要
-
-このツールは、TypeScript で書かれた AWS Lambda 関数のデプロイメントパッケージを簡単に作成することができる。TypeScript コードをコンパイルし、必要な依存関係と一緒に ZIP ファイルにパッケージングする。
+TypeScript で作成された AWS Lambda 関数をコンパイルして ZIP パッケージ化する
 
 ## インストール
 
-npm を使用してインストール：
+`npx`を使用して直接実行できる：
 
 ```bash
-# グローバルにインストール
-npm install -g @abfry0620/lambda-package
+npx @abfry0620/lambda-package
 
-# または、プロジェクト内にインストール
-npm install --save-dev @abfry0620/lambda-package
+# または必要に応じてグローバルにインストール
+npm install -g @abfry0620/lambda-package
 ```
+
+---
 
 ## 使い方
 
-### コマンドライン
+### ヘルプの表示
 
 ```bash
-# グローバルインストールの場合
-lambda-package
-
-# npxを使用する場合
-npx @abfry0620/lambda-package
+npx @abfry0620/lambda-package --help
 ```
 
-### スクリプトとして
+出力例：
 
-package.json のスクリプトに追加して使用することもできる：
+```sh
+Usage: lambda-package [options]
 
-```json
-"scripts": {
-  "package": "lambda-package"
-}
+Compile and Zip programs created in TypeScript for AWS Lambda.
+
+Options:
+  -V, --version  output the version number
+  -h, --help     display help for command
 ```
 
-そして、以下のコマンドを実行する：
+### バージョンの表示
 
 ```bash
-npm run package
+npx @abfry0620/lambda-package --version
 ```
+
+---
+
+## 処理の流れ
+
+ツールを実行すると、以下の手順が実行される：
+
+1. 既存の `dist` ディレクトリと `packages` ディレクトリをクリーンアップ
+2. TypeScript コードをコンパイル (`npm run build`)
+3. 本番用の依存関係のみをインストール
+4. コンパイルされたコードと依存関係を ZIP ファイルにパッケージング
+5. 開発用の依存関係を復元
 
 ## 設定
 
@@ -66,17 +75,31 @@ npm run package
 
 初回実行時に設定ファイルが存在しない場合は、デフォルト設定で自動的に作成される。
 
-## 動作の流れ
+---
 
-1. 既存の `dist` ディレクトリと `packages` ディレクトリをクリーンアップ
-2. TypeScript コードをコンパイル (`npm run build`)
-3. 本番用の依存関係のみをインストール
-4. コンパイルされたコードと依存関係を ZIP ファイルにパッケージング
-5. 開発用の依存関係を復元
+## プロジェクトでの使用
+
+package.json のスクリプトに追加して使用することもできる：
+
+```json
+"scripts": {
+  "package": "lambda-package"
+}
+```
+
+そして、以下のコマンドを実行する：
+
+```bash
+npm run package
+```
+
+---
 
 ## ライセンス
 
-MIT
+[MIT ライセンス](LICENSE)
+
+---
 
 ## 作者
 
