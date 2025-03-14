@@ -1,4 +1,4 @@
-# lambda-package
+# npx command for packaging AWS Lambda functions
 
 [日本語版はこちら](README-ja.md)
 
