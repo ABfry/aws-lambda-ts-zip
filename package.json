@@ -19,6 +19,21 @@
     "npx",
     "command"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ABfry/aws-lambda-ts-zip.git"
+  },
+  "homepage": "https://github.com/ABfry/aws-lambda-ts-zip",
+  "bin": {
+    "lambda-package": "dist/index.js"
+  },
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
   "devDependencies": {
     "@types/node": "^22.13.10",
     "ts-node": "^10.9.2",
@@ -26,8 +41,5 @@
   },
   "dependencies": {
     "commander": "^13.1.0"
-  },
-  "bin": {
-    "lambda-package": "dist/index.js"
   }
 }
