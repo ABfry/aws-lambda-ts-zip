@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import fs from 'fs';
+import fs from 'fs-extra';
 import path from 'path';
 import { execSync } from 'child_process';
 
@@ -58,10 +58,10 @@ function createPackage() {
   // クリーンアップ
   console.log('クリーンアップ中...');
   if (fs.existsSync(config.distDir)) {
-    runCommand(`rm -rf ${config.distDir}`);
+    fs.removeSync(config.distDir);
   }
   if (fs.existsSync(config.packageDir)) {
-    runCommand(`rm -rf ${config.packageDir}`);
+    fs.removeSync(config.packageDir);
   }
   console.log('クリーンアップ完了');
 

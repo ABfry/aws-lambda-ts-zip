@@ -41,6 +41,8 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
-    "commander": "^13.1.0"
+    "@types/fs-extra": "^11.0.4",
+    "commander": "^13.1.0",
+    "fs-extra": "^11.3.0"
   }
 }
