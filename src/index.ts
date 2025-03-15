@@ -91,7 +91,7 @@ const program = new Command('lambda-package');
 program
   .name('lambda-package')
   .description('Compile and Zip programs created in TypeScript for AWS Lambda.')
-  .version('1.0.1')
+  .version('1.0.2')
   .action(() => {
     createPackage();
   });
