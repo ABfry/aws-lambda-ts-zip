@@ -21,7 +21,13 @@ const defaultConfig: PackageConfig = {
 // コマンドを実行する関数
 function runCommand(command: string): void {
   console.log(`実行: ${command}`);
-  execSync(command, { stdio: 'inherit' });
+  try {
+    execSync(command, { stdio: 'inherit' });
+  } catch (error) {
+    console.error(`実行エラー: ${command}`);
+    console.error(error);
+    process.exit(1);
+  }
 }
 
 // 設定ファイルを読み込む関数（存在しなければ作成）
