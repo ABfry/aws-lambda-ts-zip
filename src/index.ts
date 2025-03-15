@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import fs from 'fs';
+import fs from 'fs-extra';
 import path from 'path';
 import { execSync } from 'child_process';
 
@@ -21,7 +21,13 @@ const defaultConfig: PackageConfig = {
 // コマンドを実行する関数
 function runCommand(command: string): void {
   console.log(`実行: ${command}`);
-  execSync(command, { stdio: 'inherit' });
+  try {
+    execSync(command, { stdio: 'inherit' });
+  } catch (error) {
+    console.error(`実行エラー: ${command}`);
+    console.error(error);
+    process.exit(1);
+  }
 }
 
 // 設定ファイルを読み込む関数（存在しなければ作成）
@@ -52,10 +58,10 @@ function createPackage() {
   // クリーンアップ
   console.log('クリーンアップ中...');
   if (fs.existsSync(config.distDir)) {
-    runCommand(`rm -rf ${config.distDir}`);
+    fs.removeSync(config.distDir);
   }
   if (fs.existsSync(config.packageDir)) {
-    runCommand(`rm -rf ${config.packageDir}`);
+    fs.removeSync(config.packageDir);
   }
   console.log('クリーンアップ完了');
 
@@ -85,7 +91,7 @@ const program = new Command('lambda-package');
 program
   .name('lambda-package')
   .description('Compile and Zip programs created in TypeScript for AWS Lambda.')
-  .version('1.0.1')
+  .version('1.0.2')
   .action(() => {
     createPackage();
   });
